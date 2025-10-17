@@ -1,0 +1,36 @@
+Aim:Develop a program in c to store&read student records(using struct and files).
+Program:#include <stdio.h>
+
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s;
+    FILE *fp;
+    int choice;
+
+    printf("1. Add\n2. View\nChoose: ");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        fp = fopen("student.txt", "w");
+        printf("Roll: "); scanf("%d", &s.roll);
+        printf("Name: "); scanf(" %[^\n]", s.name);
+        printf("Marks: "); scanf("%f", &s.marks);
+        fprintf(fp, "%d %s %.2f\n", s.roll, s.name, s.marks);
+        fclose(fp);
+        printf("Saved.\n");
+    } else if (choice == 2) {
+        fp = fopen("student.txt", "r");
+        fscanf(fp, "%d %s %f", &s.roll, s.name, &s.marks);
+        printf("Roll: %d\nName: %s\nMarks: %.2f\n", s.roll, s.name, s.marks);
+        fclose(fp);
+    } else {
+        printf("Invalid choice.\n");
+    }
+
+    return 0;
+}
