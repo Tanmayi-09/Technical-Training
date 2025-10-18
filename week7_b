@@ -1,0 +1,25 @@
+Aim:develop a program in c to implement bank account information using union(memory optimization).
+Program:#include <stdio.h>
+#include <string.h>
+
+union BankAccount {
+    int accNumber;
+    char name[50];
+    float balance;
+};
+
+int main() {
+    union BankAccount account;
+
+    account.accNumber = 12345;
+    printf("Account Number: %d\n", account.accNumber);
+
+    strcpy(account.name, "Rahul");
+    printf("Name: %s\n", account.name);
+
+    account.balance = 10000.50;
+    printf("Balance: %.2f\n", account.balance);
+
+    return 0;
+}
+
