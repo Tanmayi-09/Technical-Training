@@ -1,0 +1,31 @@
+aim:develop a program in c to implement sentinel linear search
+program:#include <stdio.h>
+
+int sentinelSearch(int a[], int n, int key) {
+    int last = a[n - 1];
+    a[n - 1] = key;
+    int i = 0;
+    while (a[i] != key)
+        i++;
+    a[n - 1] = last;
+    if (i < n - 1 || a[n - 1] == key)
+        return i;
+    return -1;
+}
+
+int main() {
+    int a[100], n, key, i, pos;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    printf("Enter elements:\n");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+    printf("Enter element to search: ");
+    scanf("%d", &key);
+    pos = sentinelSearch(a, n, key);
+    if (pos == -1)
+        printf("Element not found\n");
+    else
+        printf("Element found at position %d\n", pos);
+    return 0;
+}
