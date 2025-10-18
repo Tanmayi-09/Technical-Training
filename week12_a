@@ -1,0 +1,27 @@
+aim:develop a program in c to implement extern in multi-file project simulation.
+program:#include <stdio.h>
+#ifndef MULTIPLY_H
+#define MULTIPLY_H
+
+extern int multiplier;          
+int multiply(int a);            
+
+#endif
+int multiplier = 5;            
+
+int multiply(int a) {
+    return a * multiplier;
+}
+
+
+int main() {
+    int value = 10;
+    
+    printf("Multiplying %d by multiplier %d gives: %d\n", value, multiplier, multiply(value));
+    
+    
+    multiplier = 3;
+    printf("Multiplying %d by multiplier %d gives: %d\n", value, multiplier, multiply(value));
+    
+    return 0;
+}
